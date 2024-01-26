@@ -1,7 +1,7 @@
 /* 
 * 
 * This is good but it could be better. Let's add
-* Lets see what happens if we try to access the password property.
+* lets add an _ to password and see if that helps to solve our problem?
 * 
 */
 class User {

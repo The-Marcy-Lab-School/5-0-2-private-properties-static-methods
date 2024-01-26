@@ -1,7 +1,7 @@
 /* 
 * 
-* This is good but it could be better. Let's add
-* Lets see what happens if we try to access the password property.
+*This is good but it could be better. Let's add
+* The private variable using the `#` notation.
 * 
 */
 class User {
@@ -33,7 +33,4 @@ const ben = new User('ben', 'ben@mail.com');
 ben.validatePassword('1234'); // No password set.
 ben.setPassword('1234');
 ben.validatePassword('1234'); // It Matches!
-ben._password = '1212';
-ben.validatePassword('1234'); // Wrong password!
-ben.validatePassword('1212'); // It Matches!
 

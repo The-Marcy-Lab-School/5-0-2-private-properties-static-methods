@@ -91,6 +91,8 @@ Starting from ECMAScript 2019, JavaScript introduced a # notation for denoting p
 
 ```js
 class User {
+  #password;  // Declare the private field here
+
   constructor(name, email) {
     this.name = name;
     this.email = email;
