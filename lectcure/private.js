@@ -1,4 +1,7 @@
-// Good but could be better!
+/* 
+* This is good but it could be better. Let's add
+* The private variable using the `#` notation.
+*/
 class User {
   constructor(name, email) {
     this.name = name;
