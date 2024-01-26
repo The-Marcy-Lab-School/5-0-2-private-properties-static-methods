@@ -5,7 +5,7 @@
   - [Using `#` Notation](#using--notation)
 - [Static Methods](#static-methods)
 - [Quiz!](#quiz)
-- [Challenge](#challenge)
+- [Challenge](#challenge-car-class)
 - [Summary](#summary)
 
 ## Private Properties
