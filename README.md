@@ -55,7 +55,7 @@ You can still directly modify it from outside the class instance. This is genera
 
 </details>
 
-# Naming Convention
+## Naming Convention
 
 JavaScript, prior to ES6, didn't have built-in support for private properties. Developers often used a naming convention to indicate that a property should be treated as private. Conventionally, a property that's intended to be private is prefixed with an underscore `_`. This serves as a signal to other developers that the property shouldn't be accessed directly.
 
@@ -95,7 +95,7 @@ ben.validatePassword('1234'); // It Matches!
 
 While this convention is widely used, it's important to note that it doesn't provide true encapsulation or prevent access to the property. It's more of a suggestion to other developers.
 
-# Using `#` Notation
+## Using `#` Notation
 
 Starting from ECMAScript 2019, JavaScript introduced a # notation for denoting private fields directly within the class body. This provides a cleaner and more explicit way to declare private properties. In the User class example, the #password is used as a private property.
 
@@ -133,7 +133,7 @@ ben.setPassword('1234');
 ben.validatePassword('1234'); // It Matches!
 ```
 
-# Static Methods
+## Static Methods
 
 So far, all the methods we've defined in our classes are instance methods. This means they operate on instances of the class. However, there are cases where it's more appropriate to define methods that are associated with the class itself rather than its instances. These are called static methods.
 
@@ -206,7 +206,8 @@ User.makeAdmin(gonzalo);
 User.makeAdmin(zae);
 ```
 </details>
-# Quiz!
+
+## Quiz!
 
 Consider the following code snippet:
 
