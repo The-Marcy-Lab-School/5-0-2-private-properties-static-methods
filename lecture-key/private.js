@@ -1,7 +1,7 @@
 /* 
 * 
 * This is good but it could be better. Let's add
-* Lets see what happens if we try to accese the password property.
+* Lets see what happens if we try to access the password property.
 * 
 */
 class User {
