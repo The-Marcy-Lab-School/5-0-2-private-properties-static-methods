@@ -54,7 +54,7 @@ static (class) vs. instance
 */
 class User {
   #password; // private instance property  
-  static #allUsers = [] // public class property
+  static #allUsers = [] // private class property
 
   constructor(name, email, password) {
     // public instance properties
@@ -65,7 +65,7 @@ class User {
 
     User.#allUsers.push(this);
   }
-  static getAllUsers() { // class method
+  static getAllUsers() { // public class method
     return User.#allUsers
   }
   validatePassword(passwordToCheck) {
