@@ -137,9 +137,9 @@ ben.validatePassword('1234'); // It Matches!
 
 So far, all the methods and properties we've defined in our classes are instance methods and properties. This means they belong to and operate on instances of the class. However, there are cases where it's more appropriate to define methods/properties that are associated with the class itself rather than its instances. These are called static methods/properties.
 
-Static methods are defined using the `static` keyword before the method/property name. They are referenced by the class itself, not on instances of the class. 
+Static methods are defined using the `static` keyword before the method/property name. They are referenced by the class itself, not on instances of the class.
 
-Static properties are listed outside of the constructor:
+For example, if we had a `Circle` class with a `Circle.PI` property defined on the class itself:
 
 ```js
 class Circle {
@@ -147,11 +147,11 @@ class Circle {
         this.radius = radius;
     }
 
-    // this property is static because it is 
-    // shared by ALL circles
+    // this property is "owned" by the Circle class
     static PI = 3.14159;
 
     getArea() {
+        // notice how we can reference Circle.PI inside this instance method
         return Circle.PI * this.radius * this.radius;
     }
 
@@ -177,6 +177,8 @@ console.log(bigCircle.getArea()); // 314.159
 console.log(unitCircle.getCircumference()); // 6.28318
 console.log(bigCircle.getCircumference()); // 62.8318
 ```
+
+While each `Circle` instance could have their own value of `PI`, it wouldn't make much sense since the value of `PI` is constant and the same for all circles.
 
 And here is an example of a class with a private static property and a static method:
 
