@@ -3,7 +3,7 @@
 - [Private Properties](#private-properties)
   - [Naming Convention](#naming-convention)
   - [Using `#` Notation](#using--notation)
-- [Static Methods](#static-methods)
+- [Static Properties and Methods](#static-properties-and-methods)
 - [Quiz!](#quiz)
 - [Challenge](#challenge-car-class)
 - [Summary](#summary)
@@ -133,7 +133,7 @@ ben.setPassword('1234');
 ben.validatePassword('1234'); // It Matches!
 ```
 
-## Static Methods
+## Static Properties and Methods
 
 So far, all the methods and properties we've defined in our classes are instance methods and properties. This means they belong to and operate on instances of the class. However, there are cases where it's more appropriate to define methods/properties that are associated with the class itself rather than its instances. These are called static methods/properties.
 
