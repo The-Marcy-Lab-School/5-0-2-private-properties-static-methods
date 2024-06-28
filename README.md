@@ -135,19 +135,67 @@ ben.validatePassword('1234'); // It Matches!
 
 ## Static Methods
 
-So far, all the methods we've defined in our classes are instance methods. This means they operate on instances of the class. However, there are cases where it's more appropriate to define methods that are associated with the class itself rather than its instances. These are called static methods.
+So far, all the methods and properties we've defined in our classes are instance methods and properties. This means they belong to and operate on instances of the class. However, there are cases where it's more appropriate to define methods/properties that are associated with the class itself rather than its instances. These are called static methods/properties.
 
-Static methods are defined using the `static` keyword before the method name. They are invoked on the class itself, not on instances of the class. Here's an example:
+Static methods are defined using the `static` keyword before the method/property name. They are referenced by the class itself, not on instances of the class. 
+
+Static properties are listed outside of the constructor:
+
+```js
+class Circle {
+    constructor(radius) {
+        this.radius = radius;
+    }
+
+    // this property is static because it is 
+    // shared by ALL circles
+    static PI = 3.14159;
+
+    getArea() {
+        return Circle.PI * this.radius * this.radius;
+    }
+
+    getCircumference() {
+        return 2 * Circle.PI * this.radius;
+    }
+}
+
+const unitCircle = new Circle(1);
+const bigCircle = new Circle(10);
+
+// The PI value is shared by ALL circles
+console.log(Circle.PI); // 3.14159
+
+// each circle instance has a radius 
+console.log(unitCircle.radius); // 1
+console.log(bigCircle.radius); // 10
+
+// each circle instance has `getArea` and `getCircumference` methods
+console.log(unitCircle.getArea()); // 3.14159
+console.log(bigCircle.getArea()); // 314.159
+
+console.log(unitCircle.getCircumference()); // 6.28318
+console.log(bigCircle.getCircumference()); // 62.8318
+```
+
+And here is an example of a class with a private static property and a static method:
 
 ```js
 class User {
-  #password;
+  #password;            // private instance property without starting value
+  static #allUsers = []  // private static property with a starting value
 
-  constructor(name, email) {
-    this.name = name;
+  constructor(name, email, password) {
+    this.name = name;   // set the public instance property
     this.email = email;
-    this.#password = null;
-    this.isAdmin = false; // Default value for isAdmin
+
+    this.#password = password; // set the private instance property
+    User.#allUsers.push(this); // add the user to the Class's list of users
+  }
+
+  // public static method
+  static getAllUsers() { 
+    return [...User.#allUsers]
   }
 
   setPassword(newPassword) {
@@ -166,46 +214,19 @@ class User {
     console.log('Wrong password!');
     return false;
   }
-
-  // Static method to make a user an admin
-  static makeAdmin(user) {
-    user.isAdmin = true;
-    console.log(`${user.name} is now an admin.`);
-  }
 }
 
-const ben = new User('ben', 'ben@mail.com');
-ben.validatePassword('1234'); // No password set.
-ben.setPassword('1234');
-ben.validatePassword('1234'); // It Matches!
+const ben = new User('ben', 'ben@mail.com', 123);
+const carmen = new User('carmen', 'carmen@mail.com', 456);
+const zo = new User('zo', 'zo@mail.com', 789);
 
-console.log(ben.isAdmin); // false
-User.makeAdmin(ben);
-console.log(ben.isAdmin); // true
+// we made the static `allUsers` property private so it can't be modified
+// except by the constructor
+console.log(User.allUsers); // undefined
 
+// so instead we use the static method:
+console.log(User.getAllUsers()); // [ User {}, User {}, User {} ]
 ```
-**<details><summary style="color: purple">Q. Why would it be better for `makeAdmin` to be a static method rather than a instance method?</summary>**
-Clarity of Intent:
-
-* Using a static method clearly communicates that the operation is related to the User class itself, not to a specific user instance.
-* Enhances code readability by indicating that the method affects the class's behavior at a higher level.
-
-Avoiding Unnecessary Instantiation:
-
-* Making makeAdmin an instance method would require creating an instance just to make a user an admin.
-* As a static method, it avoids unnecessary instantiation for this specific operation.
-
-In general we would want to avoid the following:
-```js
-ben.makeAdmin();
-gonzalo.makeAdmin();
-zae.makeAdmin();
-// If we want to make an admin it should be:
-User.makeAdmin(ben);
-User.makeAdmin(gonzalo);
-User.makeAdmin(zae);
-```
-</details>
 
 ## Quiz!
 
