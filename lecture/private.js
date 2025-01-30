@@ -28,10 +28,14 @@ class User {
     return false;
   }
 }
-
+// ben is an "instance" of the User class
 const ben = new User('ben', 'ben@mail.com');
+console.log(ben);
+
 ben.validatePassword('1234'); // No password set.
 ben.setPassword('1234');
 ben.validatePassword('1234'); // It Matches!
+
+console.log(ben);
 
 
